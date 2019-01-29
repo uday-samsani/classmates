@@ -1,0 +1,21 @@
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  font-family: "Staatliches", cursive;
+  position: sticky;
+  font-size: 2.5em;
+  justify-content: center;
+}
+
+.sub {
+  font-size: 1em;
+  justify-content: center;
+}
+
+.link{
+  padding : 1em 2em;
+}

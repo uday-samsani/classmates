@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'account/css/index.css' %}">
+    <!--Custom CSS added-->
+
+    <title>Campus Network</title>
+{% endblock head %}
+
+{% block body %}
+    <div class="container-fluid imgbox">
+    </div>
+    <div class="titlebox">
+        <h1>Welcome to Campus Network</h1>
+    </div>
+    
+    <style>
+        .imgbox{
+            background-image: url({% static 'account/img/pagebook1.jpg' %})
+        }
+    </style>
+{% endblock body %}

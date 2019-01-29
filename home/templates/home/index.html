@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href={% static 'home/css/index.css' %}>
+    <title>Classmates</title>
+{% endblock %}
+
+{% block body %}
+    <div class="createPost">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Post" class="btn btn-outline-success">
+        </form>
+    </div>
+    <div class="feed">
+        {% for post in feed %}
+            <label>Title</label><h4>{{ post.title }}</h4>
+            <label>Description</label><h6>{{ post.description }}</h6>
+            <label>Body</label>><p>{{ post.body }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
