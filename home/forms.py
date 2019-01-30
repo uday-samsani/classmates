@@ -36,7 +36,7 @@ class PostChangeForm(forms.ModelForm):
         fields = ('post_body', 'post_desc', 'posted_by')
 
     def save(self, commit=True):
-        post = Post.objects.get(user=self.cleaned_data['user'])
+        post = Post.objects.get(posted_by=self.cleaned_data['posted_by'])
         post.post_body = self.cleaned_data['post_body']
         post.post_desc = self.cleaned_data['post_desc']
         if commit:

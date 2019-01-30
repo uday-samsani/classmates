@@ -1,11 +1,12 @@
-* {
-  margin: 0;
-}
-
 .section {
   margin: 1em 0;
   background-color: #f8f8f8;
   border: 1px #eee solid;
+}
+
+.middlePanel {
+  margin: 0;
+  padding: 0;
 }
 
 .section a {
@@ -18,5 +19,5 @@
 
 .postButtonSection {
   text-align: center;
-  margin: 1em 0.5em;
+  margin: 1em 0;
 }

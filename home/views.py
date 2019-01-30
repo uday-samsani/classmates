@@ -8,16 +8,16 @@ from .forms import PostCreationForm
 
 @login_required
 def index(request):
-    feed = Post.objects.filter(user=True)
+    feed = Post.objects.all()
     if request.method == 'POST':
         form = PostCreationForm(request.POST)
         if form.is_valid():
-            form.posted_by.set(request.user)
+            form.cleaned_data['posted_by'] = request.user
             form.save()
             return redirect('/')
     else:
         form = PostCreationForm()
-    return render(request, template_name='home/index.html', context={'form': form, 'feed': feed})
+    return render(request, template_name='home/index.html', context={'form': form, 'posts': feed})
 
 
 @login_required

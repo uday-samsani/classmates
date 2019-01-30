@@ -10,8 +10,8 @@ class PostAdmin(admin.ModelAdmin):
     form = PostChangeForm
     add_form = PostCreationForm
 
-    list_display = ('post_desc', 'posted_on', 'posted_by')
-    list_display_links = ('posted_by',)
+    list_display = ('id', 'post_desc', 'posted_on', 'posted_by')
+    list_display_links = ('id',)
 
     add_fieldsets = (
         (None, {'fields': ('post_desc', 'post_body', 'posted_by')}),

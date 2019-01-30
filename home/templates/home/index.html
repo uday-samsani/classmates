@@ -30,8 +30,15 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPostModal">
                         Add Post
                     </button>
+                    {% if posts %}
+                        {% for post in posts %}
+                        <hr>
+                        <div class="posts">
+                            <p>{{post.post_desc}}</p>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                <hr>
 
                 <!-- Modal -->
                 <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalLabel"
