@@ -12,20 +12,50 @@ class ProfileCreationForm(forms.ModelForm):
         model = Profile
         fields = ("prfile_img", "cover_img", "bio", "city")
 
+    def save(self, commit=True):
+        profile = super(ProfileCreationForm, self).save(commit=False)
+        profile.profile_img = self.cleaned_data['profile_img']
+        profile.cover_img = self.cleaned_data['cover_img']
+        profile.bio = self.cleaned_data['bio']
+        profile.city = self.cleaned_data['city']
+        if commit:
+            profile.save()
+        return profile
+
 
 class ProfileChangeForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ("profile_img", "cover_img", "bio", "city")
 
+    def save(self, commit=True):
+        profile = super(ProfileCreationForm, self).save(commit=False)
+        profile.profile_img = self.cleaned_data['profile_img']
+        profile.cover_img = self.cleaned_data['cover_img']
+        profile.bio = self.cleaned_data['bio']
+        profile.city = self.cleaned_data['city']
+        if commit:
+            profile.save()
+        return profile
 
-class AccountChangeForm(UserCreationForm):
+
+class AccountChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name', 'email',
-                  'username', 'dob', 'gender', 'password')
+        fields = ('first_name', 'last_name',
+                  'dob', 'gender', 'password')
+
+        def save(self, commit=True):
+            user = super(AccountChangeForm, self).save(commit=False)
+            user.first_name = self.cleaned_data['first_name']
+            user.last_name = self.cleaned_data['last_name']
+            user.dob = self.cleaned_data['dob']
+            user.gender = self.cleaned_data['gender']
+            if commit:
+                user.save()
+            return user
 
 
 class AccountCreationForm(UserCreationForm):
