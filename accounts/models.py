@@ -121,3 +121,17 @@ class Account(AbstractBaseUser, PermissionsMixin):
     @property
     def get_userName(self):
         return self.username
+
+
+class Profile(models.Model):
+    profile_user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    profile_img = models.ImageField(
+        verbose_name="Profile Image", default='default.jpg', upload_to="profile_pics")
+    cover_img = models.ImageField(
+        verbose_name="Cover Image", default="default.jpg", upload_to="cover_pics")
+    bio = models.CharField(
+        verbose_name="Bio", max_length=250, blank=True)
+    city = models.CharField(verbose_name="City", max_lenght=25, blank=True)
+
+    def __str__(self):
+        return self.profile_user
