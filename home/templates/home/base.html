@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+	<link rel="icon" href="{% static 'home/img/fevicon.png' %}" type="image/png">
+	<!--Fevicon added-->
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400|Roboto+Slab:300,400|Staatliches" rel="stylesheet">
+	<!--Google fonts added-->
+
+	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+	<!-- Latest compiled and minified CSS -->
+
+	<script src="{% static 'home/js/jquery.min.js' %}"></script>
+	<!-- jQuery library -->
+
+	<script src="{% static 'home/js/popper.min.js' %}"></script>
+	<!-- Popper JS -->
+
+	<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+	<!-- Latest compiled JavaScript -->
+
+	<link rel="stylesheet" href="{% static 'home/css/base.css' %}">
+	<!-- Custom css for base template -->
+	{% block head %}
+	<title>Base</title>
+	{% endblock %}
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navBar">
+		<ul class="navbar-nav mr-auto col-md-2">
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Trending</a>
+			</li>
+		</ul>
+		<div class="col-md-8">
+			<a class="navbar-brand" href={% url 'index' %}>Classmates</a>
+		</div>
+		<form class="form-inline my-2 my-lg-0 col-md-1">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		<div class="nav-item dropdown col-md-1">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+			 aria-expanded="false">
+				img
+			</a>
+			<div class="dropdown-menu dropdown-menu-right dropdown-menu-triangle " aria-labelledby="navbarDropdownMenu">
+				<div class="dropdown-item dropdownUsername">
+					<h5>{{request.user.get_full_name}}</h5>
+					<p>@{{request.user.get_userName}}</p>
+				</div>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Profile</a>
+				<a class="dropdown-item" href="#">Classroom</a>
+				<a class="dropdown-item" href="#">Academics</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Settings</a>
+				<a class="dropdown-item" href="#">Help</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="{% url 'logOut' %}">Log out</a>
+			</div>
+		</div>
+	</nav>
+	{% block body %}
+	<h2>base</h2>
+	{% endblock %}
+</body>
+
+</html>

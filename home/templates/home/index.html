@@ -1,26 +1,69 @@
-{% extends 'base.html' %}
+{% extends 'home/base.html' %}
 
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href={% static 'home/css/index.css' %}>
-    <title>Classmates</title>
+<link rel="stylesheet" href="{% static 'home/css/index.css' %}">
+<title>Classmates</title>
 {% endblock %}
 
 {% block body %}
-    <div class="createPost">
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" value="Post" class="btn btn-outline-success">
-        </form>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 leftPanel">
+            <div class="section list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    Feed
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">Classroom</a>
+                <a href="#" class="list-group-item list-group-item-action">Pages</a>
+                <a href="#" class="list-group-item list-group-item-action">Groups</a>
+                <a href="#" class="list-group-item list-group-item-action">Games</a>
+            </div>
+
+        </div>
+        <div class="col-7 middlePanel">
+            <!-- Button trigger modal -->
+            <div class="section feed">
+                <div class="postButtonSection">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPostModal">
+                        Add Post
+                    </button>
+                </div>
+                <hr>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addPostModal" tabindex="-1" role="dialog" aria-labelledby="addPostModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addPostModalLabel">Add Post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form method="post">
+                                <div class="modal-body">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-success" value="Post">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 rightPanel">
+            <div class="section notification">
+                <h4>Notification</h4>
+            </div>
+        </div>
     </div>
-    <div class="feed">
-        {% for post in feed %}
-            <label>Title</label><h4>{{ post.title }}</h4>
-            <label>Description</label><h6>{{ post.description }}</h6>
-            <label>Body</label>><p>{{ post.body }}</p>
-        {% endfor %}
-    </div>
+</div>
 {% endblock %}

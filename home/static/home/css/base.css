@@ -1,21 +1,56 @@
+* {
+	font-family: 'Roboto Slab', serif;
+}
+
 body {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+	background-color: #eeeeee;
 }
 
-.title {
-  font-family: "Staatliches", cursive;
-  position: sticky;
-  font-size: 2.5em;
-  justify-content: center;
+.navBar a {
+	color: #A8D0E6;
 }
 
-.sub {
-  font-size: 1em;
-  justify-content: center;
+.navBar a:hover {
+	color: #def2f1;
 }
 
-.link{
-  padding : 1em 2em;
+.navbar {
+	text-align: center;
+	background-color: #374785
+}
+
+.nav-item a {
+	text-align: center;
+}
+
+.navbar-brand {
+	font-family: "Staatliches", cursive;
+	position: sticky;
+	font-size: 2em;
+	padding: 0;
+	margin: 0;
+}
+
+.dropdown-menu {
+	margin-top: 0.5em;
+}
+
+.form-required {
+	display: none;
+}
+
+.dropdownUsername {
+	padding: 0 1em;
+}
+
+.dropdownUsername:hover {
+	background-color: #fff;
+}
+
+.dropdownUsername p {
+	font-weight: 300;
+}
+
+.dropdown-item {
+	font-weight: 400;
 }
