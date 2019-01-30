@@ -4,7 +4,19 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from django.contrib.auth import get_user_model
 
-from .models import stream_choice, gender_choice, course_choice
+from .models import Profile, stream_choice, gender_choice, course_choice
+
+
+class ProfileCreationForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("prfile_img", "cover_img", "bio", "city")
+
+
+class ProfileChangeForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("profile_img", "cover_img", "bio", "city")
 
 
 class AccountChangeForm(UserCreationForm):
